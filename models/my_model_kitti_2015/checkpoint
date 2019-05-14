@@ -1,0 +1,2 @@
+model_checkpoint_path: "/home/benjamin/monodepth-master-server-port/models//my_model_kitti_2015/model-2500"
+all_model_checkpoint_paths: "/home/benjamin/monodepth-master-server-port/models//my_model_kitti_2015/model-2500"

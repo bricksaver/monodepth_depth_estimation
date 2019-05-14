@@ -1,0 +1,1 @@
+ffmpeg -framerate 24 -i "cam_1_1_trim\ %04i.png" cam_1_1_trim_zoom_1_output.mp4

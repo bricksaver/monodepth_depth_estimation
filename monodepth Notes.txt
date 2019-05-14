@@ -1,0 +1,44 @@
+Notes
+
+1. set path:
+export PATH=$PATH:/mnt/c/Users/Benjamin\ Chang/Documents
+
+2. command to run monodepth_simple on test image
+python monodepth_simple.py --image_path /mnt/c/Users/Benjamin\ Chang/Documents/Video\ Processing\ Research/monodepth-master-server-port/random_test_files/test_image_2.png --checkpoint_path /mnt/c/Users/Benjamin\ Chang/Documents/Video\ Processing\ Research/monodepth-master-server-port/models/my_model_kitti_2015/model-2500
+
+3. command to run monodepth_simple_multiple_images ...
+... on kitti test images
+python monodepth_simple_multiple_images.py --image_path /mnt/c/Users/Benjamin\ Chang/Documents/KITTI\ Scene_Flow_Dataset_2015/testing/image_2/ --checkpoint_path /mnt/c/Users/Benjamin\ Chang/Documents/Video\ Processing\ Research/monodepth-master/models/model_cityscapes/model_cityscapes
+
+... on cam_1_1_trim data
+python monodepth_simple_multiple_images.py --image_path /mnt/c/Users/Benjamin\ Chang/Documents/Video\ Processing\ Research/monodepth-master/cam_1_1_trim_zoom_1/ --output_path /mnt/c/Users/Benjamin\ Chang/Documents/Video\ Processing\ Research/monodepth-master/outputs/cam_1_1_trim_zoom_1/ --checkpoint_path /mnt/c/Us
+ers/Benjamin\ Chang/Documents/Video\ Processing\ Research/monodepth-master/models/model_cityscapes
+
+4. command to run view_depth_cam_modified.py
+python view_depth_cam_modified.py
+	- RUN ON IDLE to display images
+	- Steps to install modules for IDLE
+	  	1. Command Prompt
+		2. cd "C:\Users\Benjamin Chang\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Python 3.7"
+		3. pip install matplotlib (for python 2.7)
+		3. pip3 install matplotlib (for python 3.7)
+		Also. pip3 install numpy, matplotlib, & image
+
+How to use... FFMPEG - converts images to video at higher framerate + resolution
+ffmpeg -r 30 -f image2 -s 1920x1080 -i cam_1_1_trim\ %04d_disp.png -vcodec libx264 -crf 25  -pix_fmt yuv420p cam_1_1_trim_zoom_1_depth_ffmpeg.mp4
+
+5. command to run monodepth_main.py
+on CPU
+python monodepth_main.py --mode train --model_name my_model_kitti_2015 --data_path /mnt/c/Users/Benjamin\ Chang/Documents/KITTI\ Scene_Flow_Dataset_2015/ --filenames_file /mnt/c/Users/Benjamin\ Chang/Documents/Video\ Processing\ Research/monodepth-master/utils/filenames/kitti_stereo_2015_train_files_modified.txt --log_directory /mnt/c/Users/Benjamin\ Chang/Documents/Video\ Processing\ Research/monodepth-master-server-port/models/
+on GPU
+python monodepth_main.py --mode train --model_name my_model_kitti_2015 --data_path /mnt/localdata/ --filenames_file /home/benjamin/monodepth-master-server-port/utils/filenames/kitti_stereo_2015_train_files_modified.txt --log_directory /home/benjamin/monodepth-master-server-port/models/
+
+Next Steps: Use ffpeg to store video at higher framerate + resolution
+		Use GPU to run testing code
+
+PNG to JPG Conversion
+sudo apt-get install mogrify
+mogrify -format jpg *.png
+
+Moving Files
+mv /mnt/c/Users/Benjamin\ Chang/Documents/KITTI\ Scene_Flow_Dataset_2015/training/image_2/*.jpg /mnt/c/Users/Benjamin\ Chang/Documents/KITTI\ Scene_Flow_Dataset_2015/training/image_2_jpg
